@@ -1,7 +1,7 @@
 {
-  "name": "vite-template-vanilla-ts-lib-mode",
+  "name": "cosmoteer-wiki-purge-page-button-gadget",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "postinstall": "npx commitizen init cz-conventional-changelog --save-dev --save-exact --force",
@@ -37,6 +37,7 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
     "vite-node": "^1.2.1",
+    "vite-plugin-banner": "^0.7.1",
     "vite-tsconfig-paths": "^4.3.1"
   },
   "config": {

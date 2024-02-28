@@ -16,6 +16,7 @@ import stylelint from 'stylelint';
 import colorguard from 'colorguard';
 import postcssVariablesPrefixer from 'postcss-variables-prefixer';
 import pluginCleanup from 'rollup-plugin-cleanup';
+import pluginBunner from 'vite-plugin-banner';
 
 const cssPrefix = 'purge-btn--';
 
@@ -61,6 +62,15 @@ export default defineConfig(({ mode }) => {
         },
         plugins: [
             tsconfigPaths(),
+            pluginBunner({
+                content: (
+                    '/*\n'
+                    + ' * made by aliser\n'
+                    + ' * repo: https://github.com/murolem/cosmoteer-wiki-purge-page-button-gadget\n'
+                    + '*/\n'
+                ),
+                verify: false
+            })
         ],
         build: {
             target: 'es5',
