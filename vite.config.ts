@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import cleanupPlugin from 'rollup-plugin-cleanup';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import fs from 'fs';
 import Logger from '@aliser/logger';
@@ -15,7 +14,6 @@ import postcssInlineSvg from 'postcss-inline-svg';
 import stylelint from 'stylelint';
 import colorguard from 'colorguard';
 import postcssVariablesPrefixer from 'postcss-variables-prefixer';
-import pluginCleanup from 'rollup-plugin-cleanup';
 import pluginBunner from 'vite-plugin-banner';
 
 const cssPrefix = 'purge-btn--';

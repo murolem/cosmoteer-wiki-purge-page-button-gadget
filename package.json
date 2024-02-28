@@ -30,7 +30,6 @@
     "postcss-preset-env": "^9.4.0",
     "postcss-utilities": "^0.8.4",
     "postcss-variables-prefixer": "^1.2.0",
-    "rollup-plugin-cleanup": "^3.2.1",
     "stylelint": "^16.2.1",
     "stylelint-config-standard": "^36.0.0",
     "types-mediawiki": "^1.5.0",
