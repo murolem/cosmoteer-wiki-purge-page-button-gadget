@@ -1,0 +1,47 @@
+{
+  "name": "vite-template-vanilla-ts-lib-mode",
+  "private": true,
+  "version": "1.2.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npx commitizen init cz-conventional-changelog --save-dev --save-exact --force",
+    "build": "concurrently --passthrough-arguments --kill-others-on-fail \"npm:build:*(!watch) -- {@}\" --",
+    "build:index": "npm run build-task -- ./src/index.ts",
+    "build-task": "vite-node ./tasks/build.ts -- ",
+    "sendit": "npm run build && npm run add && npm run commit && npm run push",
+    "add": "git add .",
+    "commit": "cz",
+    "push": "git push origin"
+  },
+  "devDependencies": {
+    "@aliser/logger": "github:murolem/logger",
+    "@types/jquery": "^3.5.29",
+    "@types/node": "^20.11.5",
+    "autoprefixer": "^10.4.17",
+    "colorguard": "^1.2.1",
+    "commander": "^11.1.0",
+    "concurrently": "^8.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "postcss": "^8.4.35",
+    "postcss-inline-svg": "^6.0.0",
+    "postcss-load-config": "^5.0.3",
+    "postcss-modules": "^6.0.0",
+    "postcss-nesting": "^12.0.4",
+    "postcss-preset-env": "^9.4.0",
+    "postcss-utilities": "^0.8.4",
+    "postcss-variables-prefixer": "^1.2.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "types-mediawiki": "^1.5.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vite-node": "^1.2.1",
+    "vite-tsconfig-paths": "^4.3.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

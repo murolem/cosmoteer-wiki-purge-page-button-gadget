@@ -1,0 +1,61 @@
+:root {
+    --purge-btn--bg-opacity: 50%;
+    /* // the length of the bg color transition between progress states, in ms */
+    --purge-btn--transition-duration: 100ms;
+
+    --purge-btn--stripe-size-w: 15.89px;
+    --purge-btn--stripe-size-h: 12.87px;
+    --purge-btn--stripe-color: var(--gray--light);
+    --purge-btn--stripe-cycle-duration: 300ms;
+}
+
+/* purge button */
+.btn {
+    transition: 
+        background-color var(--purge-btn--transition-duration) ease-out,
+        filter var(--purge-btn--transition-duration) ease-out;
+} 
+
+@keyframes move-stripes {
+    from {
+        background-position-x: 0px;
+    }
+    
+    to {
+        background-position-x: var(--purge-btn--stripe-size-w);
+    }
+}
+
+/* purge button → idle state (either before it's clicked 
+or after the purge is complete and the result display time has passed) */
+.progress-state-none {
+    background-color: inherit;
+}
+
+/* purge button → in-progress state */
+.btn.progress-state-in-progress {
+    --scol1: transparent;
+    --scol2: var(--purge-btn--stripe-color);
+
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+
+    background-image: linear-gradient(45deg, var(--scol1) 25%, var(--scol2) 25%, var(--scol2) 50%, var(--scol1) 50%, var(--scol1) 75%, var(--scol2) 75%, var(--scol2) 100%);
+    background-size: var(--purge-btn--stripe-size-w) var(--purge-btn--stripe-size-h);
+    
+    filter: grayscale(1);
+
+    /* transition: filter var(--purge-btn--transition-duration) ease-out; */
+    animation: move-stripes linear infinite var(--purge-btn--stripe-cycle-duration);
+}
+
+/* purge button → complete state (success) */
+.btn.progress-state-success {
+    background-color: color-mix(in srgb, var(--color-cosmoGreen) var(--purge-btn--bg-opacity), transparent);
+}
+
+/* purge button → complete state (failure) */
+.btn.progress-state-failure {
+    background-color: color-mix(in srgb, var(--red) var(--purge-btn--bg-opacity), transparent);
+}
