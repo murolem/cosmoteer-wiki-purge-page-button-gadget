@@ -85,6 +85,16 @@ $(() => {
     // a list containing all the buttons inside the "more" button menu
     var buttonList = navbarMoreButton.find('ul.vector-menu-content-list');
 
+    var existingPurgeButtons = buttonList
+        .children()
+        .toArray()
+        .filter(el => el.textContent?.toLocaleLowerCase().includes('purge cache'));
+
+    if (existingPurgeButtons.length > 0) {
+        console.log(`[${logPrefix}] found existing purge buttons (${existingPurgeButtons.length}), they will be removed: `, existingPurgeButtons);
+
+        existingPurgeButtons.forEach(btn => btn.remove());
+    }
 
     var purgeButton = $(`
     <li class="${className}--btn mw-list-item" style="
@@ -96,9 +106,6 @@ $(() => {
     `);
     purgeButton.find('a')[0].addEventListener('click', purgeCurrentPage);
 
-    // appendStylesheet(`
-
-    // `);
     buttonList.append(purgeButton);
 
 

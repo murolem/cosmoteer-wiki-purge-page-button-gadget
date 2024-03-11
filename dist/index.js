@@ -37,6 +37,16 @@ $(function() {
   };
   var navbarMoreButton = $("#p-cactions");
   var buttonList = navbarMoreButton.find("ul.vector-menu-content-list");
+  var existingPurgeButtons = buttonList.children().toArray().filter(function(el) {
+    var _a;
+    return (_a = el.textContent) == null ? void 0 : _a.toLocaleLowerCase().includes("purge cache");
+  });
+  if (existingPurgeButtons.length > 0) {
+    console.log("[".concat(logPrefix, "] found existing purge buttons (").concat(existingPurgeButtons.length, "), they will be removed: "), existingPurgeButtons);
+    existingPurgeButtons.forEach(function(btn) {
+      return btn.remove();
+    });
+  }
   var purgeButton = $('\n    <li class="'.concat(className, '--btn mw-list-item" style="\n    ">\n        <a title="Purge the page\'s cache. This will force all the page visitors to load the most recent version of the page.">\n            <span>Purge Cache</span>\n        </a>\n    </li>\n    '));
   purgeButton.find("a")[0].addEventListener("click", purgeCurrentPage);
   buttonList.append(purgeButton);
