@@ -8,8 +8,8 @@ $(function() {
   var className = "purge-btn";
   var actionResultDisplayDurationMs = 1e3;
   function purgeCurrentPage() {
-    var pageUrlWithoutParams = window.location.href.split("?")[0];
-    var purgeUrl = "".concat(pageUrlWithoutParams, "?action=purge");
+    var pageUrlWithoutParamsOrHash = window.location.href.split("?")[0].split("#")[0];
+    var purgeUrl = "".concat(pageUrlWithoutParamsOrHash, "?action=purge");
     setPurgeButtonProgressState("in-progress");
     fetch(purgeUrl, {
       "method": "POST"

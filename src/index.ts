@@ -39,8 +39,12 @@ $(() => {
     // })();
 
     function purgeCurrentPage() {
-        var pageUrlWithoutParams = window.location.href.split('?')[0];
-        var purgeUrl = `${pageUrlWithoutParams}?action=purge`;
+        var pageUrlWithoutParamsOrHash = window.location.href
+            .split('?')[0] // if any query params are present, get rid of them
+            .split('#')[0] // in hash is present, get rid of it
+            ;
+
+        var purgeUrl = `${pageUrlWithoutParamsOrHash}?action=purge`;
 
         setPurgeButtonProgressState('in-progress');
         fetch(purgeUrl, {
